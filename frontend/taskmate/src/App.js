@@ -11,6 +11,8 @@ import Login from './components/Login';
 import SideBar from './components/SideBar';
 import PageNotFound from './components/PageNotFound';
 import Tasks from './components/Tasks';
+import Dashboard from './components/Dashboard';
+import InviteTeamMembers from './components/InviteTeamMembers';
 
 
 function App() {
@@ -46,10 +48,15 @@ function App() {
         <Switch>
         <Route path="/login" component={Login} exact />
         <Route path="/register" component={Register} exact />
-        <Route path="/" exact />
+        <Route path="/" exact>
+          <SideBar component={<Dashboard />} />
+        </Route>
         <Route path="/404" component={PageNotFound} exact />
-        <Route path="/tasks" exact >
-        <SideBar component={<Tasks />} />
+        <Route path="/tasks" exact>
+          <SideBar component={<Tasks />} />
+        </Route>
+        <Route path="/invite" exact>
+          <SideBar component={<InviteTeamMembers />} />
         </Route>
         <Redirect to="/login" />
       </Switch>
