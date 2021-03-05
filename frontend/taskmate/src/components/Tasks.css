@@ -1,0 +1,80 @@
+.styled-table {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.sub-heading{
+	font-size: 140%;
+}
+
+.list-grid-view{
+	background-color: #fff;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	border: 0.5px solid #dddddd;
+	width: 8%;
+	border-radius: 10%;
+}
+
+.styled-table thead tr {
+    text-align: left;
+    border-radius: 10px;
+}
+
+.subtable-header{
+	border-bottom: thin solid #dddddd;
+}
+
+.serial-no{
+	width: 5%;
+}
+
+.col2{
+	width: 30%;
+}
+
+.col3,
+.col4,
+.col5{
+	width: 20%;
+}
+
+.styled-table .main-header tr th{
+	font-weight: 400;
+}
+
+.styled-table .main-header th{
+	padding: 15px 10px;
+}
+
+.styled-table .addnew-header th{
+	padding: 10px 10px;
+}
+
+.styled-table td {
+    padding: 5px 10px;
+}
+
+.styled-table tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+/*.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+*/
+/*.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #001529;
+}*/
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}

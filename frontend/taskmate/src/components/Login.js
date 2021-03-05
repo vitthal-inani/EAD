@@ -8,9 +8,7 @@ function Login() {
         <div className="auth">
             <div className="auth_left">
                 <div className="card">
-                    {/* <div className="text-center mb-2">
-                        <a className="header-brand" href="index-2.html"><i className="fa fa-soccer-ball-o brand-logo"></i></a>
-                    </div> */}
+
                     <div className="card-body">
                         <div className="card-title">Login to your account</div>
                         <div className="form-group">
