@@ -11,25 +11,13 @@
     background-color: #fff;
 }
 
-.sub-heading{
-	font-size: 140%;
-}
-
-.list-grid-view{
-	background-color: #fff;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-	border: 0.5px solid #dddddd;
-	width: 8%;
-	border-radius: 10px;
+.main-header{
+	border-bottom: thin solid #dddddd;
 }
 
 .styled-table thead tr {
     text-align: left;
     border-radius: 10px;
-}
-
-.subtable-header{
-	border-bottom: thin solid #dddddd;
 }
 
 .serial-no{
@@ -41,8 +29,7 @@
 }
 
 .col3,
-.col4,
-.col5{
+.col4{
 	width: 20%;
 }
 
@@ -54,12 +41,8 @@
 	padding: 15px 10px;
 }
 
-.styled-table .addnew-header th{
-	padding: 10px 10px;
-}
-
 .styled-table td {
-    padding: 5px 10px;
+    padding: 15px 10px;
 }
 
 .styled-table tbody tr {

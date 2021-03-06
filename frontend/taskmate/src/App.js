@@ -13,6 +13,7 @@ import PageNotFound from './components/PageNotFound';
 import Tasks from './components/Tasks';
 import Dashboard from './components/Dashboard';
 import InviteTeamMembers from './components/InviteTeamMembers';
+import Groups from './components/Groups';
 
 
 function App() {
@@ -45,18 +46,21 @@ function App() {
   }
   else {
     routes = (
-        <Switch>
+      <Switch>
         <Route path="/login" component={Login} exact />
         <Route path="/register" component={Register} exact />
-        <Route path="/" exact>
-          <SideBar component={<Dashboard />} />
-        </Route>
         <Route path="/404" component={PageNotFound} exact />
+        <Route path="/" exact>
+          <SideBar />
+        </Route>
         <Route path="/tasks" exact>
-          <SideBar component={<Tasks />} />
+          <SideBar />
         </Route>
         <Route path="/invite" exact>
-          <SideBar component={<InviteTeamMembers />} />
+          <SideBar />
+        </Route>
+        <Route path="/groups" exact>
+          <SideBar />
         </Route>
         <Redirect to="/login" />
       </Switch>

@@ -2,13 +2,22 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
-.trigger {
+.trigger-light {
   padding: 0 24px;
   font-size: 18px;
   line-height: 64px;
   cursor: pointer;
   transition: color 0.3s;
   color: rgba(0, 0, 0, 0.85);
+}
+
+.trigger-dark {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+  color: #f0f2f5;
 }
 
 .trigger:hover {
@@ -35,10 +44,23 @@ body{
   font-size: large;
 }
 
-.site-layout .site-layout-background {
+.site-layout-background-light {
   background: #f0f2f5;
 }
 
+.site-layout-dark {
+  background: #001529;
+}
+
+.site-layout-light {
+  background: #f0f2f5;
+}
+
+
 .light-mode{
   background: white;
+}
+
+.dark-mode{
+  background: #001529;
 }

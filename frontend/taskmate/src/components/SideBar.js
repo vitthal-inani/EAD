@@ -9,16 +9,23 @@ import {
   MenuFoldOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  UploadOutlined,
-  BulbOutlined,
+  OrderedListOutlined,
+  UsergroupAddOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
 import Button from '@material-ui/core/Button';
+import Tasks from './Tasks';
+import InviteTeamMembers from './InviteTeamMembers';
+import Dashboard from './Dashboard';
+import Groups from './Groups'; 
+
+
 const { Header, Sider, Content } = Layout;
 
 class Sidebar extends React.Component {
   state = {
     collapsed: false,
-    light_mode: false,
+    light_mode: true,
   };
 
   toggle = () => {
@@ -41,9 +48,23 @@ class Sidebar extends React.Component {
 
   render() {
     const { location } = this.props;
+
+    const theme = this.state.light_mode;
+
+    let component = <Dashboard />;
+    if (location.pathname === '/tasks'){
+      component = <Tasks theme={theme}/>
+    }else if (location.pathname === '/invite'){
+      component = <InviteTeamMembers theme={theme} />
+    }else if (location.pathname === '/groups'){
+      component = <Groups theme={theme} />
+    }else{
+      component = <Dashboard theme={theme} />
+    }
+
     return (
-      <Layout className={this.state.light_mode ? 'light-mode' : ''}>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed} className={this.state.light_mode ? 'light-mode' : ''}>
+      <Layout className={this.state.light_mode ? 'light-mode' : 'dark-mode'}>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed} className={this.state.light_mode ? 'light-mode' : 'dark-mode'}>
           <div className={this.state.light_mode ? "logo-light": "logo-dark"} >{this.state.collapsed ? 'TM' : 'TaskMate'}</div>
           <Menu theme={this.state.light_mode ? "light" : "dark"} mode="inline" defaultSelectedKeys={[location.pathname]}>
             <Menu.Item key="/" icon={<UserOutlined />} className='#1'>
@@ -52,14 +73,14 @@ class Sidebar extends React.Component {
             <Menu.Item key="/dashboard" icon={<VideoCameraOutlined />} className='#2'>
               <NavLink to="/">Dashboard</NavLink>
             </Menu.Item>
-            <Menu.Item key="/tasks" icon={<UploadOutlined />} className='#3'>
+            <Menu.Item key="/tasks" icon={<OrderedListOutlined />} className='#3'>
               <NavLink to="/tasks" activeClassName='is-active'>My tasks</NavLink> 
             </Menu.Item>
-            <Menu.Item key="/invite" icon={<UploadOutlined />}>
+            <Menu.Item key="/invite" icon={<MailOutlined />}>
               <NavLink to="/invite">Invite</NavLink>
             </Menu.Item>
-            <Menu.Item key="/forum" icon={<UploadOutlined />}>
-              <NavLink to="/">Forum</NavLink>
+            <Menu.Item key="/groups" icon={<UsergroupAddOutlined />}>
+              <NavLink to="/groups">Groups</NavLink>
             </Menu.Item>
           </Menu>
           <br />
@@ -67,31 +88,29 @@ class Sidebar extends React.Component {
             style={{
               color: `${this.state.light_mode ? '#1890ff' : 'rgba(255, 255, 255, 0.65)' }`,
               outline: 'none',
-              'margin-left': '40px'
             }}
             onClick={this.state.light_mode ? this.enableDarkMode : this.enableLightMode}
-            icon={
-              <BulbOutlined />
-            }>
+            fullWidth={true}
+            >
             {this.state.light_mode ? "Dark Mode" : "Light Mode"}
           </Button>
         </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
+        <Layout className={this.state.light_mode ? "site-layout-light" : "site-layout-dark"}>
+          <Header className={this.state.light_mode ? "site-layout-background-light" : "site-layout-background-dark"} style={{ padding: 0 }}>
             {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
+              className: `${this.state.light_mode ? 'trigger-light': 'trigger-dark'}`,
               onClick: this.toggle,
             })}
           </Header>
           <Content
-            className="site-layout-background"
+            className={this.state.light_mode ? "site-layout-background-light" : "site-layout-background-dark"}
             style={{
               margin: '24px 16px',
               padding: 24,
               minHeight: 1280,
             }}
           >
-          {this.props.component}
+          {component}
           </Content>
         </Layout>
       </Layout>
