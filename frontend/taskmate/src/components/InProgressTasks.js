@@ -12,6 +12,7 @@ import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -36,7 +37,7 @@ function AddNewTodoModal(props){
   return (
     <Modal
       {...props}
-      size="md"
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -46,29 +47,17 @@ function AddNewTodoModal(props){
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form method="POST" className={classes.container} noValidate onSubmit={props.newTodoSubmitHandler}>
+        <form method="POST" className={classes.container} noValidate onSubmit={props.submitHandler}>
           <TextField
             id="taskName"
             label="Task Name"
             autoComplete="current-password"
           />
           <TextField
-            id="time"
-            label="Hours"
-            type="time"
-            defaultValue="01:00"
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            inputProps={{
-              step: 300,
-            }}
-          />
-          <TextField
             id="taskAssignName"
             label="Task Assign Name"
             autoComplete="current-password"
+            style={{'margin-left': '5px'}}
           />
           <TextField
             id="date"
@@ -79,7 +68,7 @@ function AddNewTodoModal(props){
               shrink: true,
             }}
           />
-          <Button type="submit" style={{ outline: 'none', 'margin-top': '10px', 'margin-left': '35%' }} variant="contained" color="primary" onClick={props.onHide}>Add new</Button>
+          <Button type="submit" style={{ outline: 'none', 'margin-top': '15px', 'margin-left': '40%' }} variant="contained" color="primary" onClick={props.onHide}>Add new</Button>
         </form>
       </Modal.Body>
       <Modal.Footer>
@@ -89,11 +78,12 @@ function AddNewTodoModal(props){
   );
 }
 
-class Tasks extends React.Component{
+
+class InProgressTasks extends React.Component{
 
   state = {
     modalShow: false,
-    todos: [
+    inProgressTasks: [
       {
         id: 1,
         taskName: "Create Wireframes",
@@ -132,23 +122,21 @@ class Tasks extends React.Component{
 
   render(){
 
-    const newTodoSubmitHandler = (event) =>{
+    const submitHandler = (event) =>{
       event.preventDefault();
       const taskName = event.target.taskName.value;
-      const hours = event.target.time.value;
       const dueDate = event.target.date.value;
       const taskAssignName = event.target.taskAssignName.value;
-      const id = this.state.todos.length;
-      const newTodo = {
+      const id = this.state.inProgressTasks.length;
+      const inProgressTask = {
         id: id+1,
         taskName: taskName,
-        hours: hours,
         taskAssignName: taskAssignName,
         dueDate: dueDate
       };
-      let todos = [...this.state.todos, newTodo];
+      let inProgressTasks = [...this.state.inProgressTasks, inProgressTask];
       this.setState({
-        todos: todos,
+        inProgressTasks: inProgressTasks,
       });
     };
 
@@ -163,27 +151,25 @@ class Tasks extends React.Component{
             <tr>
                 <th className="serial-no">#</th>
                 <th className="col2">Task Name</th>
-                <th className="col3">Hours</th>
-                <th className="col4">Task Assign Name</th>
-                <th className="col5">Due Date</th>
+                <th className="col3">Task Assign Name</th>
+                <th className="col4">Due Date</th>
             </tr>
         </thead>
         </table>
-        <table className="styled-table">
-        <thead className="subtable-header-header">
+      <table className="styled-table">
+        <thead className="subtable-header">
             <tr>
                 <th className="serial-no"><IconButton style={{ outline: 'none' }}><ArrowDropDownIcon /></IconButton></th>
-                <th className="sub-heading">To Do</th>
+                <th className="sub-heading">In Progress</th>
             </tr>
         </thead>
         <tbody>
-          {this.state.todos.map((todo)=>(
+          {this.state.inProgressTasks.map((inProgressTask)=>(
             <tr>
-                <td className="serial-no">{todo.id}</td>
-                <td className="col2"><IconButton style={{ outline: 'none' }}><CheckCircleIcon style={{ color: '04c721' }} /></IconButton> {todo.taskName}</td>
-                <td className="col3">{todo.hours}</td>
-                <td className="col4">{todo.taskAssignName}</td>
-                <td className="col5">{todo.dueDate}</td>
+                <td className="serial-no">{inProgressTask.id}</td>
+                <td className="col2"><IconButton style={{ outline: 'none' }}><CheckCircleIcon style={{ color: '04c721' }} /></IconButton> {inProgressTask.taskName}</td>
+                <td className="col3">{inProgressTask.taskAssignName}</td>
+                <td className="col4">{inProgressTask.dueDate}</td>
             </tr>
           ))}
         </tbody>
@@ -191,14 +177,13 @@ class Tasks extends React.Component{
             <tr>
                 <th></th>
                 <th><Button style={{ outline: 'none' }} onClick={() => this.showModal()}>
-                <AddIcon fontSize="small"/>
-                  Add new
-                </Button></th>
+                <AddIcon fontSize="small"/> Add new</Button>
                 <AddNewTodoModal
                   show={this.state.modalShow}
                   onHide={() => this.hideModal()}
-                  newTodoSubmitHandler={newTodoSubmitHandler}
+                  submitHandler={submitHandler}
                 />
+                </th>
             </tr>
         </thead>
       </table>
@@ -207,4 +192,4 @@ class Tasks extends React.Component{
   }
 }
 
-export default Tasks;
+export default InProgressTasks;

@@ -18,6 +18,7 @@ import Tasks from './Tasks';
 import InviteTeamMembers from './InviteTeamMembers';
 import Dashboard from './Dashboard';
 import Groups from './Groups'; 
+import InProgressTasks from './InProgressTasks';
 
 
 const { Header, Sider, Content } = Layout;
@@ -58,6 +59,8 @@ class Sidebar extends React.Component {
       component = <InviteTeamMembers theme={theme} />
     }else if (location.pathname === '/groups'){
       component = <Groups theme={theme} />
+    }else if (location.pathname === '/in-progress'){
+      component = <InProgressTasks theme={theme} />
     }else{
       component = <Dashboard theme={theme} />
     }
@@ -75,6 +78,9 @@ class Sidebar extends React.Component {
             </Menu.Item>
             <Menu.Item key="/tasks" icon={<OrderedListOutlined />} className='#3'>
               <NavLink to="/tasks" activeClassName='is-active'>My tasks</NavLink> 
+            </Menu.Item>
+            <Menu.Item key="/in-progress" icon={<OrderedListOutlined />} className='#4'>
+              <NavLink to="/in-progress">In Progress</NavLink> 
             </Menu.Item>
             <Menu.Item key="/invite" icon={<MailOutlined />}>
               <NavLink to="/invite">Invite</NavLink>
