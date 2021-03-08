@@ -11,6 +11,8 @@ import AddIcon from '@material-ui/icons/Add';
 import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -79,7 +81,15 @@ function AddNewTodoModal(props){
               shrink: true,
             }}
           />
-          <Button type="submit" style={{ outline: 'none', 'margin-top': '10px', 'margin-left': '35%' }} variant="contained" color="primary" onClick={props.onHide}>Add new</Button>
+          <Button 
+            type="submit"
+            style={{ outline: 'none', 'margin-top': '10px', 'margin-left': '35%' }}
+            variant="contained"
+            color="primary"
+            onClick={props.onHide}
+          >
+            Add new
+          </Button>
         </form>
       </Modal.Body>
       <Modal.Footer>
@@ -99,21 +109,24 @@ class Tasks extends React.Component{
         taskName: "Create Wireframes",
         hours: "02:00",
         taskAssignName: "Amelia",
-        dueDate: "Yesterday"
+        dueDate: "Yesterday",
+        isComplete: false
       },
       {
         id: 2,
         taskName: "Setup Database",
         hours: "02:00",
         taskAssignName: "Julia",
-        dueDate: "Today"
+        dueDate: "Today",
+        isComplete: false
       },
       {
         id: 3,
         taskName: "Dashboard Design",
         hours: "07:00",
         taskAssignName: "Martin",
-        dueDate: "  2021-03-10"
+        dueDate: "  2021-03-10",
+        isComplete: false
       }
     ],
   };
@@ -132,7 +145,7 @@ class Tasks extends React.Component{
 
   render(){
 
-    const newTodoSubmitHandler = (event) =>{
+    const newTodoSubmitHandler = (event) => {
       event.preventDefault();
       const taskName = event.target.taskName.value;
       const hours = event.target.time.value;
@@ -152,6 +165,28 @@ class Tasks extends React.Component{
       });
     };
 
+    const clickHandler = (id) =>{
+      let todo = this.state.todos.find(todo => todo.id === id);
+      if (todo.isComplete === false){
+        todo.isComplete = true;
+      }else{
+        todo.isComplete = false;
+      }
+      let todos = [...this.state.todos]
+      this.setState({
+        todos: todos,
+      });
+    };
+
+    const deleteTodo = (id) => {
+      const todos = this.state.todos.filter(todo => {
+        return todo.id !== id
+      });
+      this.setState({
+        todos: todos,
+      });
+    };
+
     return (
       <React.Fragment>
       <div className="list-grid-view">
@@ -166,13 +201,19 @@ class Tasks extends React.Component{
                 <th className="col3">Hours</th>
                 <th className="col4">Task Assign Name</th>
                 <th className="col5">Due Date</th>
+                <th className="delete"></th>
             </tr>
         </thead>
         </table>
         <table className="styled-table">
         <thead className="subtable-header-header">
             <tr>
-                <th className="serial-no"><IconButton style={{ outline: 'none' }}><ArrowDropDownIcon /></IconButton></th>
+                <th className="serial-no">
+                  <IconButton
+                    style={{ outline: 'none' }}
+                  >
+                  <ArrowDropDownIcon />
+                  </IconButton></th>
                 <th className="sub-heading">To Do</th>
             </tr>
         </thead>
@@ -180,10 +221,22 @@ class Tasks extends React.Component{
           {this.state.todos.map((todo)=>(
             <tr>
                 <td className="serial-no">{todo.id}</td>
-                <td className="col2"><IconButton style={{ outline: 'none' }}><CheckCircleIcon style={{ color: '04c721' }} /></IconButton> {todo.taskName}</td>
+                <td className="col2">
+                  <IconButton
+                    id={todo.id}
+                    onClick={() => clickHandler(todo.id)}
+                    style={{ outline: 'none' }}
+                  >
+                  {todo.isComplete ?
+                   <CheckCircleIcon 
+                    style={{ color: '04c721' }} /> : 
+                   <CheckCircleOutlineIcon />}
+                  </IconButton> {todo.taskName}
+                </td>
                 <td className="col3">{todo.hours}</td>
                 <td className="col4">{todo.taskAssignName}</td>
                 <td className="col5">{todo.dueDate}</td>
+                <td className="delete"><IconButton id={todo.id} onClick={() => deleteTodo(todo.id)} style={{ outline: 'none' }}><DeleteIcon /></IconButton></td>
             </tr>
           ))}
         </tbody>

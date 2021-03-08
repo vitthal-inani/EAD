@@ -11,6 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 import ViewComfyIcon from '@material-ui/icons/ViewComfy';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,21 +90,24 @@ class InProgressTasks extends React.Component{
         taskName: "Create Wireframes",
         hours: "02:00",
         taskAssignName: "Amelia",
-        dueDate: "Yesterday"
+        dueDate: "Yesterday",
+        isComplete: false
       },
       {
         id: 2,
         taskName: "Setup Database",
         hours: "02:00",
         taskAssignName: "Julia",
-        dueDate: "Today"
+        dueDate: "Today",
+        isComplete: false
       },
       {
         id: 3,
         taskName: "Dashboard Design",
         hours: "07:00",
         taskAssignName: "Martin",
-        dueDate: "  2021-03-10"
+        dueDate: "  2021-03-10",
+        isComplete: false
       }
     ],
   };
@@ -140,6 +144,24 @@ class InProgressTasks extends React.Component{
       });
     };
 
+    const clickHandler = (id) =>{
+      let inProgressTask = this.state.inProgressTasks.find(inProgressTask => inProgressTask.id === id);
+      inProgressTask.isComplete = true;
+      let inProgressTasks = [...this.state.inProgressTasks]
+      this.setState({
+        inProgressTasks: inProgressTasks,
+      });
+    };
+
+    const deleteInProgressTask = (id) => {
+      const inProgressTasks = this.state.inProgressTasks.filter(inProgressTask => {
+        return inProgressTask.id !== id
+      });
+      this.setState({
+        inProgressTasks: inProgressTasks,
+      });
+    };
+
     return (
       <React.Fragment>
       <div className="list-grid-view">
@@ -150,9 +172,10 @@ class InProgressTasks extends React.Component{
         <thead className="main-header">
             <tr>
                 <th className="serial-no">#</th>
-                <th className="col2">Task Name</th>
-                <th className="col3">Task Assign Name</th>
-                <th className="col4">Due Date</th>
+                <th className="col-2">Task Name</th>
+                <th className="col-3">Task Assign Name</th>
+                <th className="col-4">Due Date</th>
+                <th className="delete"></th>
             </tr>
         </thead>
         </table>
@@ -167,9 +190,23 @@ class InProgressTasks extends React.Component{
           {this.state.inProgressTasks.map((inProgressTask)=>(
             <tr>
                 <td className="serial-no">{inProgressTask.id}</td>
-                <td className="col2"><IconButton style={{ outline: 'none' }}><CheckCircleIcon style={{ color: '04c721' }} /></IconButton> {inProgressTask.taskName}</td>
-                <td className="col3">{inProgressTask.taskAssignName}</td>
-                <td className="col4">{inProgressTask.dueDate}</td>
+                <td className="col-2">
+                	<IconButton
+                    id={inProgressTask.id}
+                    onClick={() => clickHandler(inProgressTask.id)}
+                    style={{ outline: 'none' }}
+                  >
+                  {inProgressTask.isComplete ?
+                   <CheckCircleIcon 
+                    style={{ color: '04c721' }} /> : 
+                   <CheckCircleOutlineIcon />}
+                  </IconButton> {inProgressTask.taskName}
+                  </td>
+                <td className="col-3">{inProgressTask.taskAssignName}</td>
+                <td className="col-4">{inProgressTask.dueDate}</td>
+                <td className="delete"><IconButton style={{ outline: 'none' }} id={inProgressTask.id} onClick={() => deleteInProgressTask(inProgressTask.id)}>
+                	<DeleteIcon />
+                </IconButton></td>
             </tr>
           ))}
         </tbody>
