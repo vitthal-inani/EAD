@@ -64,7 +64,7 @@ class Sidebar extends React.Component {
 
     return (
       <Layout className={this.state.light_mode ? 'light-mode' : 'dark-mode'}>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed} className={this.state.light_mode ? 'light-mode' : 'dark-mode'}>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed} className={this.state.light_mode ? 'light-mode' : 'dark-mode'} style={{position: "fixed", height: "100%", zIndex: 1}}>
           <div className={this.state.light_mode ? "logo-light": "logo-dark"} >{this.state.collapsed ? 'TM' : 'TaskMate'}</div>
           <Menu theme={this.state.light_mode ? "light" : "dark"} mode="inline" defaultSelectedKeys={[location.pathname]}>
             <Menu.Item key="/" icon={<UserOutlined />} className='#1'>
@@ -105,7 +105,7 @@ class Sidebar extends React.Component {
           <Content
             className={this.state.light_mode ? "site-layout-background-light" : "site-layout-background-dark"}
             style={{
-              margin: '24px 16px',
+              marginLeft: "200px",
               padding: 24,
               minHeight: 1280,
             }}
