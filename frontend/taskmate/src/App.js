@@ -56,6 +56,9 @@ function App() {
         <Route path="/tasks" exact>
           <SideBar />
         </Route>
+        <Route path="/in-progress" exact>
+          <SideBar />
+        </Route>
         <Route path="/invite" exact>
           <SideBar />
         </Route>

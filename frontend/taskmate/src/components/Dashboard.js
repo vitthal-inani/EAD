@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Tasks from './Tasks';
 import InviteTeamMembers from './InviteTeamMembers';
 import Groups from './Groups'; 
+import Progress from './InProgressTasks'; 
 
 function Dashboard(){
 	const useStyles = makeStyles((theme) => ({
@@ -20,14 +21,13 @@ function Dashboard(){
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={6}>
                     <div className="sections">
-						<h2>Groups</h2>
-                        <Groups/>
+                        <Tasks/>
                     </div>
                     </Grid>
         
                     <Grid item xs={12} md={6}>
                         <div className="sections">
-                        <InviteTeamMembers/>
+                        <Progress/>
 						</div>
                     </Grid>
                 </Grid>
@@ -36,7 +36,7 @@ function Dashboard(){
                     
                     <Grid item xs={12}>
                         <div className="sections">
-                       <Tasks/>
+                       <Groups/>
 						</div>
                     </Grid>
 
