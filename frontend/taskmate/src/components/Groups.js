@@ -4,8 +4,6 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Modal } from 'react-bootstrap';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -13,11 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '20ch',
-  },
+
 }));
 
 function CreateGroupModal(props){
@@ -26,7 +20,7 @@ function CreateGroupModal(props){
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -43,7 +37,7 @@ function CreateGroupModal(props){
 		          label="Group Name"
 		          style={{ margin: 8 }}
 		          placeholder="Enter a group name"
-		          fullWidth
+		          fullWidth={true}
 		          margin="normal"
 		          InputLabelProps={{
 		            shrink: true,
@@ -55,7 +49,7 @@ function CreateGroupModal(props){
 		          label="Group Description"
 		          style={{ margin: 8 }}
 		          placeholder="Enter group's description"
-		          fullWidth
+		          fullWidth={true}
 		          margin="normal"
 		          InputLabelProps={{
 		            shrink: true,
@@ -67,7 +61,7 @@ function CreateGroupModal(props){
 		          label="GitHub Repo"
 		          style={{ margin: 8 }}
 		          placeholder="Provide your GitHub repo link"
-		          fullWidth
+		          fullWidth={true}
 		          margin="normal"
 		          InputLabelProps={{
 		            shrink: true,

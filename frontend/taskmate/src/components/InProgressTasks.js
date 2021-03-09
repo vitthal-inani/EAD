@@ -38,7 +38,7 @@ function AddNewTodoModal(props){
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -53,12 +53,14 @@ function AddNewTodoModal(props){
             id="taskName"
             label="Task Name"
             autoComplete="current-password"
+            className={classes.textField}
           />
           <TextField
             id="taskAssignName"
             label="Task Assign Name"
             autoComplete="current-password"
             style={{'margin-left': '5px'}}
+            className={classes.textField}
           />
           <TextField
             id="date"
@@ -69,7 +71,7 @@ function AddNewTodoModal(props){
               shrink: true,
             }}
           />
-          <Button type="submit" style={{ outline: 'none', 'margin-top': '15px', 'margin-left': '40%' }} variant="contained" color="primary" onClick={props.onHide}>Add new</Button>
+          <Button type="submit" style={{ outline: 'none', 'margin-top': '15px' }} variant="contained" color="primary" onClick={props.onHide}>Add new</Button>
         </form>
       </Modal.Body>
       <Modal.Footer>

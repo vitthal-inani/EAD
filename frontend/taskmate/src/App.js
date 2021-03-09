@@ -1,19 +1,16 @@
 import React, {useState, useCallback} from 'react';
-import SplitPane from 'react-split-pane';
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
   Switch,
 } from "react-router-dom";
-import Register from './components/Register';
-import Login from './components/Login';
 import SideBar from './components/SideBar';
-import PageNotFound from './components/PageNotFound';
 import Tasks from './components/Tasks';
 import Dashboard from './components/Dashboard';
 import InviteTeamMembers from './components/InviteTeamMembers';
 import Groups from './components/Groups';
+import Auth from './components/Auth';
 
 
 function App() {
@@ -38,7 +35,6 @@ function App() {
   if (isLoggedIn){
     routes = (
       <Switch>
-        <Route path="/404" component={PageNotFound} exact />
         <Route path="/" component={SideBar} exact />
         <Redirect to="/" />
       </Switch>
@@ -47,9 +43,7 @@ function App() {
   else {
     routes = (
       <Switch>
-        <Route path="/login" component={Login} exact />
-        <Route path="/register" component={Register} exact />
-        <Route path="/404" component={PageNotFound} exact />
+        <Route path="/auth" component={Auth} exact />
         <Route path="/" exact>
           <SideBar />
         </Route>
@@ -65,7 +59,7 @@ function App() {
         <Route path="/groups" exact>
           <SideBar />
         </Route>
-        <Redirect to="/login" />
+        <Redirect to="/auth" />
       </Switch>
       )
   }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import './Tasks.css';
 import { Modal } from 'react-bootstrap';
+import './Tasks.css';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
@@ -53,6 +53,7 @@ function AddNewTodoModal(props){
             id="taskName"
             label="Task Name"
             autoComplete="current-password"
+            className={classes.textField}
           />
           <TextField
             id="time"
@@ -71,6 +72,7 @@ function AddNewTodoModal(props){
             id="taskAssignName"
             label="Task Assign Name"
             autoComplete="current-password"
+            className={classes.textField}
           />
           <TextField
             id="date"
@@ -83,7 +85,7 @@ function AddNewTodoModal(props){
           />
           <Button 
             type="submit"
-            style={{ outline: 'none', 'margin-top': '10px', 'margin-left': '35%' }}
+            style={{ outline: 'none', 'margin-top': '10px'}}
             variant="contained"
             color="primary"
             onClick={props.onHide}
