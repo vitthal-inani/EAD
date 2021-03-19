@@ -2,6 +2,11 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
+.ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+  color: rgba(255, 255, 255, 0.65);
+  background: #121212;
+}
+
 .trigger-light {
   padding: 0 24px;
   font-size: 18px;
@@ -48,8 +53,12 @@ body{
   background: #f0f2f5;
 }
 
+.site-layout-background-dark {
+  background: #121212;
+}
+
 .site-layout-dark {
-  background: #001529;
+  background: #121212;
 }
 
 .site-layout-light {
@@ -62,5 +71,5 @@ body{
 }
 
 .dark-mode{
-  background: #001529;
+  background: #121212;
 }

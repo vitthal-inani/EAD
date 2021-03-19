@@ -148,7 +148,11 @@ class InProgressTasks extends React.Component{
 
     const clickHandler = (id) =>{
       let inProgressTask = this.state.inProgressTasks.find(inProgressTask => inProgressTask.id === id);
-      inProgressTask.isComplete = true;
+      if (inProgressTask.isComplete === false){
+        inProgressTask.isComplete = true;
+      }else{
+        inProgressTask.isComplete = false;
+      }
       let inProgressTasks = [...this.state.inProgressTasks]
       this.setState({
         inProgressTasks: inProgressTasks,
@@ -166,16 +170,12 @@ class InProgressTasks extends React.Component{
 
     return (
       <React.Fragment>
-      {/* <div className="list-grid-view">
-        <IconButton style={{ outline: 'none' }}><ListIcon /></IconButton>
-        <IconButton style={{ outline: 'none' }}><ViewComfyIcon /></IconButton>
-      </div> */}
       <table className="styled-table">
         <thead className="main-header">
             <tr>
                 <th className="serial-no">#</th>
                 <th className="col-2">Task Name</th>
-                <th className="col-3">Task Assign Name</th>
+                <th className="col-3">Assign Name</th>
                 <th className="col-4">Due Date</th>
                 <th className="delete"></th>
             </tr>
@@ -197,11 +197,12 @@ class InProgressTasks extends React.Component{
                     id={inProgressTask.id}
                     onClick={() => clickHandler(inProgressTask.id)}
                     style={{ outline: 'none' }}
+                    size='small'
                   >
                   {inProgressTask.isComplete ?
                    <CheckCircleIcon 
-                    style={{ color: '04c721' }} /> : 
-                   <CheckCircleOutlineIcon />}
+                    style={{ color: '04c721' }} size='small' /> : 
+                   <CheckCircleOutlineIcon size='small' />}
                   </IconButton> {inProgressTask.taskName}
                   </td>
                 <td className="col-3">{inProgressTask.taskAssignName}</td>

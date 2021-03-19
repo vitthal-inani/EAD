@@ -191,24 +191,20 @@ class Tasks extends React.Component{
 
     return (
       <React.Fragment>
-      {/* <div className="list-grid-view">
-        <IconButton style={{ outline: 'none' }}><ListIcon /></IconButton>
-        <IconButton style={{ outline: 'none' }}><ViewComfyIcon /></IconButton>
-      </div> */}
-      <table className="styled-table">
+      <table className={this.props.theme ? "styled-table" : "styled-table-dark"}>
         <thead className="main-header">
             <tr>
                 <th className="serial-no">#</th>
                 <th className="col2">Task Name</th>
                 <th className="col3">Hours</th>
-                <th className="col4">Task Assign Name</th>
+                <th className="col4">Assign Name</th>
                 <th className="col5">Due Date</th>
                 <th className="delete"></th>
             </tr>
         </thead>
         </table>
-        <table className="styled-table">
-        <thead className="subtable-header-header">
+        <table className={this.props.theme ? "styled-table" : "styled-table-dark"}>
+        <thead className="subtable-header">
             <tr>
                 <th className="serial-no">
                   <IconButton
@@ -227,12 +223,13 @@ class Tasks extends React.Component{
                   <IconButton
                     id={todo.id}
                     onClick={() => clickHandler(todo.id)}
-                    style={{ outline: 'none' }}
+                    style={{ outline: 'none', marginLeft: 0 }}
+                    size='small'
                   >
                   {todo.isComplete ?
                    <CheckCircleIcon 
-                    style={{ color: '04c721' }} /> : 
-                   <CheckCircleOutlineIcon />}
+                    style={{ color: '04c721' }} size='small' /> : 
+                   <CheckCircleOutlineIcon size='small' />}
                   </IconButton> {todo.taskName}
                 </td>
                 <td className="col3">{todo.hours}</td>
