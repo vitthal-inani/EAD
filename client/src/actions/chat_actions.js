@@ -29,9 +29,10 @@ export const fetchChat = chatId => dispatch =>
     dispatch(receiveChat(chat));
   });
 
-export const createChat = chat => dispatch =>
+export const createChat = (chat, userId) => dispatch =>
   ChatApiUtil.createChat(chat).then(newChat => {
-    dispatch(receiveChat(newChat));
+    fetchChats(userId);
+    window.location.reload(false);
   });
 
 export const deleteChat = id => dispatch =>

@@ -72,31 +72,55 @@ class ChatIndex extends React.Component {
         </div>
         <ul className="conversations">
           <li className="chat-type">Group Messages</li>
-          {this.state.groupChats.map(chatData => {
-            return (
-              <ChatIndexItem
-                key={chatData.chat._id}
-                chatData={chatData}
-                users={users}
-                currentUser={currentUser.id}
-                openChatModal={openChatModal}
-                closeGroupModal={closeGroupModal}
-              />
-            );
-          })}
+          {this.state.groupChats.length === 0 ? 
+
+          <li className="chats">
+            <div className="chat">
+            <div className="chat-content">
+              No group conversations yet!
+            </div>
+            </div>
+          </li>
+             : 
+          
+            this.state.groupChats.map(chatData => {
+              return (
+                <ChatIndexItem
+                  key={chatData.chat._id}
+                  chatData={chatData}
+                  users={users}
+                  currentUser={currentUser.id}
+                  openChatModal={openChatModal}
+                  closeGroupModal={closeGroupModal}
+                />
+              );
+            })
+          }
+          
           <li className="chat-type">Private Messages</li>
-          {this.state.privateChats.map(chatData => {
-             return chatData.chat==null?null:(
-              <ChatIndexItem
-                key={chatData.chat._id}
-                chatData={chatData}
-                users={users}
-                currentUser={currentUser.id}
-                openChatModal={openChatModal}
-                closeGroupModal={closeGroupModal}
-              />
-            );
-          })}
+          {this.state.privateChats.length === 0 ? 
+
+            <li className="chats">
+              <div className="chat">
+                <div className="chat-content">
+                  No private conversations yet!
+                </div>
+              </div>
+           </li>
+             :
+             this.state.privateChats.map(chatData => {
+              return (
+               <ChatIndexItem
+                 key={chatData.chat._id}
+                 chatData={chatData}
+                 users={users}
+                 currentUser={currentUser.id}
+                 openChatModal={openChatModal}
+                 closeGroupModal={closeGroupModal}
+               />
+             );
+           })
+          }
         </ul>
       </div>
     );

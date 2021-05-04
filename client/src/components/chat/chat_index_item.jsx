@@ -3,7 +3,6 @@ import React from "react";
 class ChatIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    
     this.renderParticipants = this.renderParticipants.bind(this);
     this.renderTime = this.renderTime.bind(this);
     this.renderMessage = this.renderMessage.bind(this);
@@ -34,16 +33,24 @@ class ChatIndexItem extends React.Component {
     let { messages } = this.props.chatData;
 
     if (messages.length > 0) {
-      const time = messages[messages.length - 1].timestamp;
-      const month = time.slice(5, 7);
-      const date = time.slice(8, 10);
-      const year = time.slice(2, 4);
+      try {
+        const time = messages[messages.length - 1].timestamp;
+        const month = time.slice(5, 7);
+        const date = time.slice(8, 10);
+        const year = time.slice(2, 4);
 
-      return (
-        <p className="date">
-          {month}-{date}-{year}
-        </p>
-      );
+        return (
+          <p className="date">
+            {month}-{date}-{year}
+          </p>
+        );
+      } catch (error) {
+        return (
+          <p className="date">
+            Now
+          </p>
+        )
+      }
     }
   }
 
