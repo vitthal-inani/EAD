@@ -25,7 +25,7 @@ export const selectChat = (entities, chatId) => {
 
 export const selectAllMessages = (entities) => {
   let totalMessages = 0;
-  Object.values(entities.chats).map(chat => totalMessages += chat.messages.length);
+  Object.values(entities.chats).map( chat => chat.messages==null ?totalMessages+=0 :totalMessages += chat.messages.length);
   return totalMessages;
 }
 export const selectGroupTaskIds = (groupId, tasks) => {

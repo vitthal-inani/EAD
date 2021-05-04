@@ -21,7 +21,7 @@ class GroupDetail extends React.Component {
     return (
       <div className="group-detail-container">
         <div className="group-detail-header">
-          <h3>{group.name}</h3>
+          <h3>{group==null?null:group.name}</h3>
           <div className="group-detail-buttons">
             <button
               className="edit-group-button"

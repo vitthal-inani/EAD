@@ -86,7 +86,7 @@ class ChatIndex extends React.Component {
           })}
           <li className="chat-type">Private Messages</li>
           {this.state.privateChats.map(chatData => {
-            return (
+             return chatData.chat==null?null:(
               <ChatIndexItem
                 key={chatData.chat._id}
                 chatData={chatData}
