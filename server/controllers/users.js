@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs'); // for password hashing
 const User = require('../models/user');
 const jsonwebtoken = require('jsonwebtoken');
 const keys = require('../config/keys');
-const passport = require('passport');
+const passport = require('passport'); // authentication
 const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
 
@@ -28,7 +28,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-
   User.findOne({ _id: req.params.id }).then(user => {
     if (user) {
       res.send({
@@ -133,7 +132,7 @@ router.post('/login', (req, res) => {
             jsonwebtoken.sign(
               payload,
               keys.secretOrKey,
-              // Tell the key to expire in one hour
+              // key to expires in one hour
               { expiresIn: 3600 },
               (err, token) => {
                 res.json({

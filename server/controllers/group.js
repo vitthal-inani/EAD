@@ -1,5 +1,5 @@
 const Group = require('../models/group');
-// import validateGroupInput from '../validation/group';
+// const validateGroupInput=require('../validation/group');
 
 exports.getGroups = [
   function (req, res) {
@@ -35,6 +35,8 @@ exports.createGroup = [
     // if (!isValid) {
     //   return res.status(400).json(errors);
     // }
+    users = req.body.users
+    users.push(req.body.creator)
     const newGroup = new Group({
       name: req.body.name,
       imageUrl: "",

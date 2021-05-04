@@ -1,10 +1,12 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-const validateGroupInput = (data) => {
+
+module.exports = function validateGroupInput(data) {
+// const validateGroupInput = (data) => {
   let errors = {};
 
-  if (!Validator.isLength(data.name, { min: 3, max: 20 })) {
+  if (!Validator.isLength(data.name, { min: 1, max: 20 })) {
     errors.name = 'Group name must be between 3 and 20 characters';
   }
 
@@ -14,4 +16,4 @@ const validateGroupInput = (data) => {
   };
 };
 
-export default validateGroupInput;
+// export default validateGroupInput;
