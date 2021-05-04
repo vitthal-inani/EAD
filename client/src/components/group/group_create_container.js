@@ -5,7 +5,8 @@ import { createChat } from "../../actions/chat_actions";
 import { selectUsernamesFromUsers } from "../../reducers/selectors";
 import { closeGroupForm } from "../../actions/modal_actions";
 
-const mapStateToProps = ({ entities: { users }, usernameMapping }) => ({
+const mapStateToProps = ({ entities: { users }, usernameMapping, session }) => ({
+  currentUser: session,
   usernames: selectUsernamesFromUsers(users),
   usernameMapping
 });

@@ -38,6 +38,7 @@ class GroupCreate extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const newGroup = {
+      creator: this.props.currentUser.id,
       name: this.state.name,
       users: this.state.currentUsernames.map(
         username => this.props.usernameMapping[username]
@@ -45,7 +46,7 @@ class GroupCreate extends React.Component {
     };
     this.props
       .createGroup(newGroup)
-      .then(this.props.createChat(newGroup), this.props.closeGroupForm());
+      .then(this.props.createChat(newGroup, this.props.currentUser.id), this.props.closeGroupForm());
   }
 
   update(field) {
@@ -134,7 +135,13 @@ class GroupCreate extends React.Component {
   }
 
   showUsernames() {
-    const { usernames } = this.props;
+    const { usernames, currentUser } = this.props;
+    for(var i=0; i<usernames.length; i++){
+      if (usernames[i].value === currentUser.username){
+        usernames.splice(i, 1);
+        break;
+      }
+    }
     const { isOpen } = this.state;
     if (!isOpen) return null;
     return <div className="usernames">{usernames.map(this.showUsername)}</div>;
