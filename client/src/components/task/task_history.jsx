@@ -34,7 +34,7 @@ class TaskShow extends React.Component {
               <ListItem className={`collection-item hvr-fade`} >
                 <ListItemAvatar>
                   <Avatar className={`folder-icon ${this.state.completed[idx] ? "complete" : "incomplete"}`}>
-                    {this.state.completed[this.state.completed.length - 1] ? <i className="fas fa-check"></i> : <FolderIcon />}
+                    {this.state.completed[idx] ? <i className="fas fa-check"></i> : <FolderIcon />}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
