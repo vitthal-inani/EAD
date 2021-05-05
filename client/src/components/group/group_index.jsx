@@ -18,7 +18,7 @@ class GroupIndex extends React.Component {
       <div className="group-index-container">
         <ul className="group-index">
           <div className="group-index-header">
-            <h5>Your Groups</h5>
+            <h5 style={{fontWeight: 'bold'}}>Your Groups</h5>
             <button className="open-group-create-button" onClick={openGroupForm}>
               <i className="fas fa-plus"></i>
             </button>

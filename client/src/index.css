@@ -1176,7 +1176,9 @@ body {
   color: white; }
 
 .task-parent-container {
-  grid-area: main; }
+  grid-area: main;
+  height: 0px;
+}
 
 #task-index-list {
   padding-bottom: 0px;
@@ -1732,6 +1734,7 @@ body {
   .group-index-container .group-index {
     font-size: 20px; }
     .group-index-container .group-index .group-index-item {
+      height: 50px;
       font-size: 16px;
       padding: 10px;
       border-top: 1px solid #dedede; }

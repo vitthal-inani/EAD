@@ -44,6 +44,7 @@ class GroupCreate extends React.Component {
         username => this.props.usernameMapping[username]
       )
     };
+    newGroup.users = [...newGroup.users, this.props.currentUser.id];
     this.props
       .createGroup(newGroup)
       .then(this.props.createChat(newGroup, this.props.currentUser.id), this.props.closeGroupForm());
