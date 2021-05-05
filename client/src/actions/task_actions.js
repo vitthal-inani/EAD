@@ -35,6 +35,10 @@ export const updateTask = task => dispatch => (
   TaskApiUtil.updateTask(task).then(updatedTask => dispatch(receiveTask(updatedTask)))
 );
 
+export const forwardTask = task => dispatch => (
+  TaskApiUtil.forwardTask(task).then(updatedTask => dispatch(receiveTask(updatedTask)))
+);
+
 export const deleteTask = id => dispatch => (
   TaskApiUtil.deleteTask(id).then(task => dispatch(removeTask(task)))
 );

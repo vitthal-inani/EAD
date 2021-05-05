@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchTasks, deleteTask, updateTask } from '../../actions/task_actions';
+import { fetchTasks, deleteTask, updateTask,forwardTask } from '../../actions/task_actions';
 import { fetchAllUsers } from '../../actions/user_actions';
 import TaskIndex from './task_index';
 
@@ -38,7 +38,8 @@ const mapDispatchToProps = dispatch => ({
   fetchUsers: () => dispatch(fetchAllUsers()),
   fetchTasks: () => dispatch(fetchTasks()),
   deleteTask: id => dispatch(deleteTask(id)),
-  updateTask: task => dispatch(updateTask(task))
+  updateTask: task => dispatch(updateTask(task)),
+  forwardTask: task => dispatch(forwardTask(task))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskIndex);

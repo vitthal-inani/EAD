@@ -85,12 +85,13 @@ class TaskIndex extends React.Component {
                 />
                 <ListItemSecondaryAction>
                   <div className="secondary-action-container">
-                    <TaskEdit
+                    {/* <TaskEdit
                       snack={this.handleClick}
                       updateTask={this.props.updateTask}
+                      
                       users={this.props.users}
                       task={task}
-                    />
+                    /> */}
                     <IconButton aria-label="Delete" onClick={() => this.props.deleteTask(task._id)}>
                       <i className="fas fa-trash"></i>
                     </IconButton>
@@ -98,10 +99,10 @@ class TaskIndex extends React.Component {
                 </ListItemSecondaryAction>
               </ListItem>
             }>
-              <TaskShowContainer
+              {/* <TaskShowContainer
                 task={task}
                 idx={idx}
-              />
+              /> */}
             </Modal>
           ))}
         </List>
@@ -132,6 +133,7 @@ class TaskIndex extends React.Component {
                     <TaskEdit
                       snack={this.handleClick}
                       updateTask={this.props.updateTask}
+                      forwardTask={this.props.forwardTask}
                       users={this.props.users}
                       task={task}
                     />

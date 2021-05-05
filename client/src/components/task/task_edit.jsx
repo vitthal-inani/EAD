@@ -19,6 +19,7 @@ class TaskEdit extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleForward=this.handleForward.bind(this);
   }
 
   handleSubmit(e) {
@@ -32,8 +33,26 @@ class TaskEdit extends React.Component {
       userId: this.state.userId,
       groupId: this.state.groupId
     };
+    console.log(task._id);
+    // this.props.updateTask(task);
+    this.props.snack();
+  }
 
-    this.props.updateTask(task);
+
+  handleForward(e) {
+    e.preventDefault();
+    const task = {
+      _id: this.state._id,
+      name: this.state.name,
+      description: this.state.description,
+      estTime: this.state.estTime,
+      deadline: this.state.deadline,
+      userId: this.state.userId,
+      completed: false,
+    };
+
+    console.log("Hi! I've been forwarded");
+    this.props.forwardTask(task);
     this.props.snack();
   }
 
@@ -71,7 +90,7 @@ class TaskEdit extends React.Component {
           <div className="label">
             <h1>Edit - {task.name}</h1>
           </div>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleForward}>
             <div className="row">
               <div className="input-field col s6">
                 <i className="fas fa-tasks prefix"></i>

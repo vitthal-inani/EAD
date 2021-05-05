@@ -42,12 +42,11 @@ class TaskShow extends React.Component {
 
     // this.props.updateTask(task);
     
-    // console.log("HIIIIIIIIIIIIIIIIIIII");
-    // const idx =this.state.index;
-    // const id=this.state._id;
-    // const json = {}
-    // console.log(idx);
-    // console.log(id);
+    const idx =this.state.index;
+    const id=this.state._id;
+    const json = {}
+    console.log(idx);
+    console.log(id);
     // this.props.markComplete(json,idx,id);
   }
 
