@@ -1,7 +1,7 @@
 import React from 'react';
 import './Auth.css';
-import Log from '../assets/log.svg';
-import Register from '../assets/register.svg';
+import Log from '../../assets/log.svg';
+import Register from '../../assets/register.svg';
 
 
 class Auth extends React.Component{

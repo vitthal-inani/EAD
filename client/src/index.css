@@ -1730,7 +1730,7 @@ body {
   background: white;
   border-right: 1px solid #dedede;
   box-sizing: border-box;
-  height: 100%; }
+}
   .group-index-container .group-index {
     font-size: 20px; }
     .group-index-container .group-index .group-index-item {

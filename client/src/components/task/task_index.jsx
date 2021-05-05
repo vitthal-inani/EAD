@@ -64,7 +64,7 @@ class TaskIndex extends React.Component {
       <div className="task-parent-container">
         <List id="task-index-list" className="task-index-container collection with-header">
           <ListItem className="collection-header" id="task-header">
-            <h5>My Tasks</h5>
+            <h5>All Tasks</h5>
             <Modal id="create-task-modal" trigger={createTaskButton} >
               <div className="modal-content">
                 <TaskCreateContainer snack={this.handleClick} />
@@ -107,7 +107,7 @@ class TaskIndex extends React.Component {
 
         <List id="task-index-list" className="task-index-container collection with-header">
           <ListItem className="collection-header" id="task-header">
-            <h4>My Tasks</h4>
+            <h5>My Tasks</h5>
             <Modal id="create-task-modal" trigger={createTaskButton} >
               <div className="modal-content">
                 <TaskCreateContainer snack={this.handleClick} />
