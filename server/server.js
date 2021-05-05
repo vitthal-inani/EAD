@@ -12,7 +12,7 @@ const passport = require('passport');
 const jsonwebtoken = require('jsonwebtoken');
 const path = require('path');
 const users = require('./controllers/users');
-const task = require('./controllers/task');
+const task = require('./controllers/taskP');
 const group = require('./controllers/group');
 const chat = require('./controllers/chat');
 const message = require('./controllers/message');
@@ -54,21 +54,21 @@ app.use(bodyParser.json());
 
 app.use('/api/users', users);
 
-// app.get('/api/tasks', task.getTasks); // get all tasks
-// app.get('/api/tasks/user',task.getUserTasks); //get users task uid: parameter
-// app.get('/api/tasks/group',task.getGroupTasks); // get group tasks gid: parameter
-// app.get('/api/tasks/:id', task.getTask); // get specific task
-// app.post('/api/tasks', task.addTask); // add a task
-// app.patch('/api/tasks/:id/forward', task.forwardTask); //forward a task
-// app.patch('/api/tasks/:id/:index/mark',task.markAsCompletedTask); //mark part of task as completed
-// app.delete('/api/tasks/:id', task.deleteTask); // delete task
+app.get('/api/tasks', task.getTasks); // get all tasks
+app.get('/api/tasks/user',task.getUserTasks); //get users task uid: parameter
+app.get('/api/tasks/group',task.getGroupTasks); // get group tasks gid: parameter
+app.get('/api/tasks/:id', task.getTask); // get specific task
+app.post('/api/tasks', task.addTask); // add a task
+app.patch('/api/tasks/:id/forward', task.forwardTask); //forward a task
+app.patch('/api/tasks/:id/:index/mark',task.markAsCompletedTask); //mark part of task as completed
+app.delete('/api/tasks/:id', task.deleteTask); // delete task
 
-app.get('/api/tasks', task.getUserTasks);
-app.get('/api/tasks/:id', task.getTask);
-app.post('/api/tasks', task.addTask);
-app.patch('/api/tasks/:id', task.updateTask);
-app.delete('/api/tasks/:id', task.deleteTask);
-app.post('/api/tasks/forward',task.forwardTask);
+// app.get('/api/tasks', task.getUserTasks);
+// app.get('/api/tasks/:id', task.getTask);
+// app.post('/api/tasks', task.addTask);
+// app.patch('/api/tasks/:id', task.updateTask);
+// app.delete('/api/tasks/:id', task.deleteTask);
+// app.post('/api/tasks/forward',task.forwardTask);
 
 app.get('/api/groups/', group.getGroups);
 app.get('/api/groups/:groupId', group.getGroup);

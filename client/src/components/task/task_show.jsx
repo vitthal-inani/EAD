@@ -1,5 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
+import { Modal } from 'react-materialize';
+import IconButton from '@material-ui/core/IconButton';
 
 class TaskShow extends React.Component {
   constructor(props) {
@@ -22,45 +24,46 @@ class TaskShow extends React.Component {
     e.preventDefault();
     //If already marked as completed, make it incomplete:
 
-    const task = {
-      _id: this.state._id,
-      name: this.state.name,
-      description: this.state.description,
-      estTime: this.state.estTime,
-      deadline: this.state.deadline,
-      userId: this.state.userId,
-      groupId: this.state.groupId
-    };
+    // const task = {
+    //   _id: this.state._id,
+    //   name: this.state.name,
+    //   description: this.state.description,
+    //   estTime: this.state.estTime,
+    //   deadline: this.state.deadline,
+    //   userId: this.state.userId,
+    //   groupId: this.state.groupId
+    // };
 
-    if (this.state.completed === true) {
-      task.completed = false;
-      this.setState({ completed: false });
-    } else {
-      task.completed = true;
-      this.setState({ completed: true });
-    }
+    // if (this.state.completed === true) {
+    //   task.completed = false;
+    //   this.setState({ completed: false });
+    // } else {
+    //   task.completed = true;
+    //   this.setState({ completed: true });
+    // }
 
-    this.props.updateTask(task);
+    // this.props.updateTask(task);
     
-    // const idx =this.state.index;
-    // const id=this.state._id;
-    // const json = {}
-    // console.log(idx);
-    // console.log(id);
-    // this.props.markComplete(json,idx,id);
+    const idx =this.state.index;
+    const id=this.state._id;
+    const json = {}
+    console.log(idx);
+    console.log(id);
+    this.props.markComplete(json,idx,id);
   }
 
   render() {
     const { task, groups } = this.props;
     if (Object.keys(groups).length === 0 || !task) return null;
-    let buttonText = this.state.completed ? "Mark as Incomplete" : "Mark as Complete";
+    let buttonText = this.state.completed[this.state.completed.length-1] ? "Mark as Incomplete" : "Mark as Complete";
     console.log(groups, task);
     return (
+      <Modal className="edit-task" trigger={<IconButton><i className="fas fa-check"></i></IconButton>}>
       <div className="task-modal-container">
         <div className="label">
           <div className="task-title">
             <h1>{task.name}</h1>
-            {this.state.completed ? <i className="fas fa-check fa-2x"></i> : <i id="incomplete" className="fas fa-check fa-2x"></i>}
+            {this.state.completed[this.state.completed.length-1] ? <i className="fas fa-check fa-2x"></i> : <i id="incomplete" className="fas fa-check fa-2x"></i>}
           </div>
           <h2>{groups[task.groupId].name}</h2>
         </div>
@@ -111,10 +114,11 @@ class TaskShow extends React.Component {
             </div>
           </div>
           <div className="complete-button">
-            <button onClick={this.handleMark} className="btn waves-effect waves-light modal-close"> {buttonText} </button>
+            <button onClick={this.handleMark} className="btn waves-effect waves-light modal-close"> Complete Task </button>
           </div>
         </div>
       </div>
+      </Modal>
     );
   }
 }

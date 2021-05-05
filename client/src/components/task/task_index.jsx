@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-materialize';
 import TaskCreateContainer from './task_create_container';
 import TaskShowContainer from './task_show_container';
+import TaskHistory from './task_history';
 import TaskEdit from './task_edit';
 import Snack from './snack';
 import Moment from 'moment';
@@ -71,12 +72,12 @@ class TaskIndex extends React.Component {
               </div>
             </Modal>
           </ListItem>
-          {tasks.map((task,idx) => (
+          {tasks.map((task, idx) => (
             <Modal key={task._id} trigger={
               <ListItem className={`collection-item hvr-fade`} key={task._id}>
                 <ListItemAvatar>
                   <Avatar className={`folder-icon ${task.completed ? "complete" : "incomplete"}`}>
-                    {task.completed ? <i className="fas fa-check"></i> : <FolderIcon />}
+                    {task.completed[task.completed.length - 1] ? <i className="fas fa-check"></i> : <FolderIcon />}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
@@ -99,10 +100,9 @@ class TaskIndex extends React.Component {
                 </ListItemSecondaryAction>
               </ListItem>
             }>
-              {/* <TaskShowContainer
+              <TaskHistory
                 task={task}
-                idx={idx}
-              /> */}
+              /> 
             </Modal>
           ))}
         </List>
@@ -110,18 +110,18 @@ class TaskIndex extends React.Component {
         <List id="task-index-list" className="task-index-container collection with-header">
           <ListItem className="collection-header" id="task-header">
             <h6>My Tasks</h6>
-            <Modal id="create-task-modal" trigger={createTaskButton} >
+            {/* <Modal id="create-task-modal" trigger={createTaskButton} >
               <div className="modal-content">
                 <TaskCreateContainer snack={this.handleClick} />
               </div>
-            </Modal>
+            </Modal> */}
           </ListItem>
-          {mytasks.map((task,idx) => (
+          {mytasks.map((task, idx) => (
             <Modal key={task._id} trigger={
               <ListItem className={`collection-item hvr-fade`} key={task._id}>
                 <ListItemAvatar>
                   <Avatar className={`folder-icon ${task.completed ? "complete" : "incomplete"}`}>
-                    {task.completed ? <i className="fas fa-check"></i> : <FolderIcon />}
+                    {task.completed[task.completed.length - 1] ? <i className="fas fa-check"></i> : <FolderIcon />}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText
@@ -130,6 +130,10 @@ class TaskIndex extends React.Component {
                 />
                 <ListItemSecondaryAction>
                   <div className="secondary-action-container">
+                    <TaskShowContainer
+                      task={task}
+                      idx={idx}
+                    />
                     <TaskEdit
                       snack={this.handleClick}
                       updateTask={this.props.updateTask}
@@ -144,9 +148,8 @@ class TaskIndex extends React.Component {
                 </ListItemSecondaryAction>
               </ListItem>
             }>
-              <TaskShowContainer
+              <TaskHistory
                 task={task}
-                idx={idx}
               />
             </Modal>
           ))}

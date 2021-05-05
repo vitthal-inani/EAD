@@ -78,7 +78,7 @@ class TaskCreate extends React.Component {
     let { users, groups, currentUserId } = this.props;
     let userOptions = [];
     users.forEach(user => {
-      if(user.id!=currentUserId){
+      if(user.id!==currentUserId){
         userOptions.push({
           label: user.username,
           value: user.id

@@ -101,7 +101,6 @@ exports.addTask = [
       estTime: [req.body.estTime],
       completed: [false],
       creatorId: req.body.creatorId,
-      index: [0],
     });
     console.log(req.body.name);
     console.log(req.body.description);
@@ -128,12 +127,13 @@ exports.forwardTask = [
           error: 'Task not found'
         });
       }
+      const length= task.completed.length; 
       task.description.push(req.body.description);
       task.deadline.push(req.body.deadline);
-      task.estTime.push(req.body.estTime);
+      // task.estTime.push(req.body.estTime);
       task.userId.push(req.body.userId);
+      task.completed.set(length-1,true);
       task.completed.push(false);
-      task.index.push(length(task.index))
 
       task.save().then((updatedTask) => {
         res.send(updatedTask);
@@ -148,9 +148,6 @@ exports.forwardTask = [
 exports.markAsCompletedTask = [
     function (req, res, next) {
       const id = req.params.id;
-      const index=req.params.index;
-      console.log(index);
-      console.log(id);
       TaskP.findOneAndUpdate({
         _id: id,
       }).then((task) => {
@@ -161,6 +158,7 @@ exports.markAsCompletedTask = [
           });
         }
         console.log(task.completed)
+        const index=task.completed.length
         task.completed.set(index,true)
         task.save().then((updatedTask) => {
           res.send(updatedTask);

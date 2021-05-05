@@ -7,7 +7,7 @@ import TaskIndex from './task_index';
 const mapStateToProps = (state) => {
   let tasks = Object.values(state.entities.tasks)
   let mytasks = Object.values(state.entities.tasks)
-    .filter(task => task.userId === state.session.id
+    .filter(task => task.userId[task.userId.length-1] === state.session.id && !task.completed[task.completed.length-1]
     );
   if (state.ui.groupModal) {
     tasks = tasks.filter(task => task.groupId === state.ui.groupModal);

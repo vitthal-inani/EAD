@@ -48,7 +48,6 @@ class TaskEdit extends React.Component {
       estTime: this.state.estTime,
       deadline: this.state.deadline,
       userId: this.state.userId,
-      completed: false,
     };
 
     console.log("Hi! I've been forwarded");
@@ -85,12 +84,12 @@ class TaskEdit extends React.Component {
     });
 
     return (
-      <Modal className="edit-task" trigger={<IconButton><i className="fas fa-pencil-alt"></i></IconButton>}>
+      <Modal className="edit-task" trigger={<IconButton><i className="fas fa-arrow-right"></i></IconButton>}>
         <div className="task-modal-container">
           <div className="label">
-            <h1>Edit - {task.name}</h1>
+            <h1>Forward - {task.name}</h1>
           </div>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleForward}>
             <div className="row">
               <div className="input-field col s6">
                 <i className="fas fa-tasks prefix"></i>
@@ -147,7 +146,7 @@ class TaskEdit extends React.Component {
               </div>
             </div>
             <div id="close-button">
-              <button className="btn waves-effect waves-light modal-close" type="submit"> Update Task </button>
+              <button className="btn waves-effect waves-light modal-close" type="submit"> Complete and Forward Task </button>
             </div>
           </form>
         </div>
