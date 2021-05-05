@@ -144,6 +144,8 @@ exports.markAsCompletedTask = [
     function (req, res, next) {
       const id = req.params.id;
       const index=req.params.index;
+      console.log(index);
+      console.log(id);
       TaskP.findOneAndUpdate({
         _id: id,
       }).then((task) => {

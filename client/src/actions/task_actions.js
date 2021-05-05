@@ -38,3 +38,7 @@ export const updateTask = task => dispatch => (
 export const deleteTask = id => dispatch => (
   TaskApiUtil.deleteTask(id).then(task => dispatch(removeTask(task)))
 );
+
+export const markComplete = (task,idx,id) => dispatch => (
+  TaskApiUtil.markComplete(task,idx,id).then(updatedTask => dispatch(receiveTask(updatedTask)))
+);

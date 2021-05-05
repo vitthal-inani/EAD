@@ -26,6 +26,10 @@ export const updateTask = data => (
   axios.patch(`/api/tasks/${data._id}`, data)
 );
 
+export const markComplete = (data,idx,id) => (
+  axios.patch(`/api/tasks/${id}/${idx}/mark`, data)
+);
+
 export const deleteTask = id => (
   axios.delete(`/api/tasks/${id}`)
 );

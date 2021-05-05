@@ -71,7 +71,7 @@ class TaskIndex extends React.Component {
               </div>
             </Modal>
           </ListItem>
-          {tasks.map(task => (
+          {tasks.map((task,idx) => (
             <Modal key={task._id} trigger={
               <ListItem className={`collection-item hvr-fade`} key={task._id}>
                 <ListItemAvatar>
@@ -100,6 +100,7 @@ class TaskIndex extends React.Component {
             }>
               <TaskShowContainer
                 task={task}
+                idx={idx}
               />
             </Modal>
           ))}
@@ -114,7 +115,7 @@ class TaskIndex extends React.Component {
               </div>
             </Modal>
           </ListItem>
-          {mytasks.map(task => (
+          {mytasks.map((task,idx) => (
             <Modal key={task._id} trigger={
               <ListItem className={`collection-item hvr-fade`} key={task._id}>
                 <ListItemAvatar>
@@ -143,6 +144,7 @@ class TaskIndex extends React.Component {
             }>
               <TaskShowContainer
                 task={task}
+                idx={idx}
               />
             </Modal>
           ))}
