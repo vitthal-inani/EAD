@@ -33,7 +33,7 @@ class TaskShow extends React.Component {
           {this.state.description.map((description, idx) => (
               <ListItem className={`collection-item hvr-fade`} >
                 <ListItemAvatar>
-                  <Avatar className={`folder-icon ${this.state.completed[this.state.completed.length - 1] ? "complete" : "incomplete"}`}>
+                  <Avatar className={`folder-icon ${this.state.completed[idx] ? "complete" : "incomplete"}`}>
                     {this.state.completed[this.state.completed.length - 1] ? <i className="fas fa-check"></i> : <FolderIcon />}
                   </Avatar>
                 </ListItemAvatar>
