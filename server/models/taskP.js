@@ -9,6 +9,10 @@ const TaskPSchema = new Schema({
   description: [{
     type: String
   }],
+  index: [{
+    type: Number,
+    required: true
+  }],
   creatorId: {
       type: String,
       required: true,

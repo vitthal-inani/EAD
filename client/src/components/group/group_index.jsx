@@ -16,6 +16,7 @@ class GroupIndex extends React.Component {
     if (!userGroups) return null;
     let _userGroups = [];
     let noOfGroups = userGroups.length;
+    console.log(userGroups);
     if (noOfGroups > 10){
       _userGroups = userGroups.slice(0, 10);
     }
@@ -28,7 +29,7 @@ class GroupIndex extends React.Component {
               <i className="fas fa-plus"></i>
             </button>
           </div>
-          {_userGroups.map(group => (
+          {userGroups.map(group => (
             <GroupIndexItem
               key={group._id}
               group={group}

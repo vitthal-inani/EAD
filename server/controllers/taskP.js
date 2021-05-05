@@ -101,7 +101,11 @@ exports.addTask = [
       estTime: [req.body.estTime],
       completed: [false],
       creatorId: req.body.creatorId,
+      index: [0],
     });
+    console.log(req.body.name);
+    console.log(req.body.description);
+    console.log(req.body.groupId);
 
     task.save().then((newTask) => {
       res.send(newTask);
@@ -129,6 +133,7 @@ exports.forwardTask = [
       task.estTime.push(req.body.estTime);
       task.userId.push(req.body.userId);
       task.completed.push(false);
+      task.index.push(length(task.index))
 
       task.save().then((updatedTask) => {
         res.send(updatedTask);

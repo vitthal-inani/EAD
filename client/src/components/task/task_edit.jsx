@@ -90,7 +90,7 @@ class TaskEdit extends React.Component {
           <div className="label">
             <h1>Edit - {task.name}</h1>
           </div>
-          <form onSubmit={this.handleForward}>
+          <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="input-field col s6">
                 <i className="fas fa-tasks prefix"></i>

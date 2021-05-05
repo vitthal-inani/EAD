@@ -22,13 +22,16 @@ class TaskCreate extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let { users, groups, currentUserId } = this.props;
+
     const task = {
       name: this.state.name,
       description: this.state.description,
       estTime: this.state.estTime,
       deadline: this.state.deadline,
       userId: this.state.userId.value,
-      groupId: this.state.groupId.value
+      groupId: this.state.groupId.value,
+      creatorId: currentUserId,
     };
 
     this.props.createTask(task);
@@ -75,10 +78,12 @@ class TaskCreate extends React.Component {
     let { users, groups, currentUserId } = this.props;
     let userOptions = [];
     users.forEach(user => {
-      userOptions.push({
-        label: user.username,
-        value: user.id
-      });
+      if(user.id!=currentUserId){
+        userOptions.push({
+          label: user.username,
+          value: user.id
+        });
+      }
     });
 
     let groupOptions = [];

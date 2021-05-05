@@ -36,7 +36,8 @@ exports.createGroup = [
     //   return res.status(400).json(errors);
     // }
     users = req.body.users
-    users.push(req.body.creator)
+    // users.push(req.body.creator)
+    console.log(users)
     const newGroup = new Group({
       name: req.body.name,
       imageUrl: "",

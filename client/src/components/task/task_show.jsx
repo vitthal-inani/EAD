@@ -22,31 +22,31 @@ class TaskShow extends React.Component {
     e.preventDefault();
     //If already marked as completed, make it incomplete:
 
-    // const task = {
-    //   _id: this.state._id,
-    //   name: this.state.name,
-    //   description: this.state.description,
-    //   estTime: this.state.estTime,
-    //   deadline: this.state.deadline,
-    //   userId: this.state.userId,
-    //   groupId: this.state.groupId
-    // };
+    const task = {
+      _id: this.state._id,
+      name: this.state.name,
+      description: this.state.description,
+      estTime: this.state.estTime,
+      deadline: this.state.deadline,
+      userId: this.state.userId,
+      groupId: this.state.groupId
+    };
 
-    // if (this.state.completed === true) {
-    //   task.completed = false;
-    //   this.setState({ completed: false });
-    // } else {
-    //   task.completed = true;
-    //   this.setState({ completed: true });
-    // }
+    if (this.state.completed === true) {
+      task.completed = false;
+      this.setState({ completed: false });
+    } else {
+      task.completed = true;
+      this.setState({ completed: true });
+    }
 
-    // this.props.updateTask(task);
+    this.props.updateTask(task);
     
-    const idx =this.state.index;
-    const id=this.state._id;
-    const json = {}
-    console.log(idx);
-    console.log(id);
+    // const idx =this.state.index;
+    // const id=this.state._id;
+    // const json = {}
+    // console.log(idx);
+    // console.log(id);
     // this.props.markComplete(json,idx,id);
   }
 
