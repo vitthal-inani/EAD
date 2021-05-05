@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import SignUpFormContainer from "./signup_form_container";
 import LogInFormContainer from "./login_form_container";
@@ -19,7 +19,6 @@ const App = () => (
       <AuthRoute exact path="/" component={SplashPage} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      <Redirect to="/" />
     </Switch>
 
     <ProtectedRoute exact path="/" component={HomePageContainer} />

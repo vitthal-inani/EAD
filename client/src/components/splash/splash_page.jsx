@@ -17,11 +17,6 @@ class SplashPage extends React.Component {
                     </nav>
                     <nav className="right-nav">
                         <ul>
-                            <li className="github-link">
-                                <a href="https://github.com/schen13/TaskTracker">
-                                    <i className="fab fa-github" />
-                                </a>
-                            </li>
                             <li className="login">
                                 <Link className='splash-signup-button' to="/login">
                                     Log In

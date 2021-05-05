@@ -82,19 +82,19 @@ class Auth extends React.Component{
             <div className={this.state.signupMode ? "container sign-up-mode" : "container"}>
             <div className="forms-container">
                 <div className="signin-signup">
-                <form className="sign-in-form" onSubmit={this.handleSignIn}>
-                    <h2 className="title">Sign in</h2>
-                    <div className="input-field">
+                <form className="sign-in-form" onSubmit={this.handleSignIn} id="auth-form">
+                    <h2 className="title" id="title">Sign in</h2>
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-envelope"></i>
                         <input type="text" placeholder="Email Address" onChange={this.signin_data_update('email')} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-lock"></i>
                         <input type="password" placeholder="Password" onChange={this.signin_data_update('password')} />
                     </div>
-                    <input type="submit" value="Login" className="btn solid" />
+                    <input type="submit" value="Login" className="btn solid" id="btn" />
                     <p className="social-text">Or Sign in with social platforms</p>
-                    <div className="social-media">
+                    <div className="social-media" id="social-media">
                     <a className="social-icon">
                         <i className="fab fa-facebook-f"></i>
                     </a>
@@ -109,36 +109,36 @@ class Auth extends React.Component{
                     </a>
                     </div>
                 </form>
-                <form className="sign-up-form" onSubmit={this.handleSignUp}>
-                    <h2 className="title">Sign up</h2>
+                <form className="sign-up-form" onSubmit={this.handleSignUp} id="auth-form">
+                    <h2 className="title" id="title">Sign up</h2>
 
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-user"></i>
                         <input type="text" placeholder="Username" onChange={this.signup_data_update('username')} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-envelope"></i>
                         <input type="email" placeholder="Email" onChange={this.signup_data_update('email')} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-user"></i>
                         <input type="text" placeholder="First Name" onChange={this.signup_data_update('fName')} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-user"></i>
                         <input type="text" placeholder="Last Name" onChange={this.signup_data_update('lName')} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-lock"></i>
                         <input type="password" placeholder="Password" onChange={this.signup_data_update('password')} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field" id="input-field">
                         <i className="fas fa-lock"></i>
                         <input type="password" placeholder="Confirm Password" onChange={this.signup_data_update('password2')} />
                     </div>
-                    <input type="submit" className="btn" value="Sign up" />
+                    <input type="submit" className="btn" value="Sign up" id="btn" />
                     <p className="social-text">Or Sign up with social platforms</p>
-                    <div className="social-media">
+                    <div className="social-media" id="social-media">
                     <a className="social-icon">
                         <i className="fab fa-facebook-f"></i>
                     </a>
