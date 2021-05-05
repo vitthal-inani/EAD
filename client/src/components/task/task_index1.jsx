@@ -56,55 +56,11 @@ class TaskIndex extends React.Component {
 
   render() {
     if (!this.props.tasks) return null;
-    let { tasks, mytasks } = this.props;
-    console.log(tasks)
+    let { tasks } = this.props;
     let createTaskButton = <Button floating id="create-task-button"><i className="fas fa-plus"></i></Button>;
 
     return (
       <div className="task-parent-container">
-        <List id="task-index-list" className="task-index-container collection with-header">
-          <ListItem className="collection-header" id="task-header">
-            <h5>My Tasks</h5>
-            <Modal id="create-task-modal" trigger={createTaskButton} >
-              <div className="modal-content">
-                <TaskCreateContainer snack={this.handleClick} />
-              </div>
-            </Modal>
-          </ListItem>
-          {tasks.map(task => (
-            <Modal key={task._id} trigger={
-              <ListItem className={`collection-item hvr-fade`} key={task._id}>
-                <ListItemAvatar>
-                  <Avatar className={`folder-icon ${task.completed ? "complete" : "incomplete"}`}>
-                    {task.completed ? <i className="fas fa-check"></i> : <FolderIcon />}
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary={task.name}
-                  secondary={`Finish by: ${Moment(task.deadline).utc().format("MMMM Do, YYYY")}`}
-                />
-                <ListItemSecondaryAction>
-                  <div className="secondary-action-container">
-                    <TaskEdit
-                      snack={this.handleClick}
-                      updateTask={this.props.updateTask}
-                      users={this.props.users}
-                      task={task}
-                    />
-                    <IconButton aria-label="Delete" onClick={() => this.props.deleteTask(task._id)}>
-                      <i className="fas fa-trash"></i>
-                    </IconButton>
-                  </div>
-                </ListItemSecondaryAction>
-              </ListItem>
-            }>
-              <TaskShowContainer
-                task={task}
-              />
-            </Modal>
-          ))}
-        </List>
-
         <List id="task-index-list" className="task-index-container collection with-header">
           <ListItem className="collection-header" id="task-header">
             <h4>My Tasks</h4>
@@ -114,7 +70,7 @@ class TaskIndex extends React.Component {
               </div>
             </Modal>
           </ListItem>
-          {mytasks.map(task => (
+          {tasks.map(task => (
             <Modal key={task._id} trigger={
               <ListItem className={`collection-item hvr-fade`} key={task._id}>
                 <ListItemAvatar>
