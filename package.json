@@ -1,5 +1,5 @@
 {
-  "name": "TaskTracker",
+  "name": "TaskMate",
   "version": "1.0.0",
   "description": "TaskMate: Tracks tasks for small teams",
   "main": "index.js",
