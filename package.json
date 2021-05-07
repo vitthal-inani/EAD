@@ -1,7 +1,7 @@
 {
   "name": "TaskTracker",
   "version": "1.0.0",
-  "description": "TaskTracker is a web application that aims to delegate responsibilities between housemates and provide an outlet to express comments and suggestions to one another anonymously. Living with others can be difficult, but TaskTracker makes it easy to ensure everyone does their part. ### Functionality & MVP With this application, users will be able to: + Create a list of weekly responsibilities that can be randomly delegated + Participate in an anonymous group chat and post photos to highlight certain issues + Private messaging between members in your house + Track stats and visualize the distribution of responsibilities + Chat with other neighbors living near or around you",
+  "description": "TaskMate: Tracks tasks for small teams",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -22,15 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/schen13/TaskTracker.git"
+    "url": "git+https://github.com/vitthal-inani/EAD"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/schen13/TaskTracker/issues"
   },
-  "homepage": "https://github.com/schen13/TaskTracker#readme",
+  "homepage": "https://github.com/vitthal-inani/EAD",
   "dependencies": {
     "concurrently": "^4.0.1"
   },
