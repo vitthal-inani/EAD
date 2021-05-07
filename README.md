@@ -17,7 +17,8 @@ TaskMate uses a number of open source projects to work properly:
 - [ReactJS] - HTML enhanced for web apps (as given in client)
 - [node.js] - evented I/O for the backend
 - [Express] - fast node.js network app framework (given in server)
-- [Azure] - Backend Deployed for auto scaling
+- [Azure] - Backend Deployed for auto scaling 
+- [MongoDB] - NOSQL databse for vertical scaling
 
 Install the dependencies and devDependencies and start the server.
 
